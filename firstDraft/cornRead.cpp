@@ -28,7 +28,6 @@ int main() {
 		exit(1);
 	}
 	string item;
-	string cornSymb;
 	//Reading the entire file
 	while (inFile != EOF){
 		getline(inFile, item); //Reads in whole line as one string
