@@ -1,5 +1,5 @@
 /**********************************************
-* File: sortedlldriver.cpp
+* File: cornRead.cpp
 * Author: Ray Kman
 * Email: rkman@nd.edu
 *
@@ -123,7 +123,7 @@ int main() {
 		}
 		if (item.compare(0,3,"ZCZ") == 0) {
 			cout << item << " ";
-			if (item.compare(4,1,"-") == 0) { 
+			if (item.compare(4,1,"-") == 0) {
 				cout << "Spread" << endl;
 			} else{
 				cout << "Outright" << endl;
