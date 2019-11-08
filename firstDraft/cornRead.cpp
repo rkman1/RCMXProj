@@ -14,118 +14,114 @@
 #include <fstream>
 #include <string>
 
-using namespace std;
-
-
 int main() {
 
-	ifstream inFile;
+	std::ifstream inFile;
 	inFile.open("corn.txt"); // Opens the File
 
 	//Check for Error
 	if(!inFile){
-		cout << "Error reading file in." << endl;
+		std::cout << "Error reading file in." << std::endl;
 		exit(1);
 	}
-	string item;
+	std::string item;
 	//Reading the entire file
-	while (inFile != EOF){
-		getline(inFile, item); //Reads in whole line as one string
+	while (std::getline(inFile, item)){
 
 		if (item.compare(0,3,"ZCF") == 0) { //Filters out non-Corn Futures
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) { //Checks for spread or outright
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 		if (item.compare(0,3,"ZCG") == 0) {
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) {
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 		if (item.compare(0,3,"ZCH") == 0) {
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) {
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 		if (item.compare(0,3,"ZCJ") == 0) {
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) {
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 		if (item.compare(0,3,"ZCK") == 0) {
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) {
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 		if (item.compare(0,3,"ZCM") == 0) {
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) {
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 		if (item.compare(0,3,"ZCN") == 0) {
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) {
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 		if (item.compare(0,3,"ZCQ") == 0) {
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) {
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 		if (item.compare(0,3,"ZCU") == 0) {
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) {
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 		if (item.compare(0,3,"ZCV") == 0) {
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) {
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 		if (item.compare(0,3,"ZCX") == 0) {
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) {
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 		if (item.compare(0,3,"ZCZ") == 0) {
-			cout << item << " ";
+			std::cout << item << " ";
 			if (item.compare(4,1,"-") == 0) {
-				cout << "Spread" << endl;
+				std::cout << "Spread" << std::endl;
 			} else{
-				cout << "Outright" << endl;
+				std::cout << "Outright" << std::endl;
 			}
 		}
 	}

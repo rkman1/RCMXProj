@@ -15,7 +15,7 @@ CFLAGS := -std=c11 $(FLAGS)
 CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
 
 # Variables for Folders
-01 := ~/RCMX_Code/firstDraft
+01 := ~/Documents/RCMX_Code/firstDraft
 
 # Command: make cornRead
 # Use of a Linked List with a sort in C
