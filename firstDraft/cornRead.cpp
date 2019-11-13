@@ -1,7 +1,7 @@
 /**********************************************
 * File: cornRead.cpp
-* Author: Ray Kman
-* Email: rkman@nd.edu
+* Author: Ray Kman & Connnor Grace
+* Email: rkman@nd.edu, cgrace1@nd.edu
 *
 * This file contains the main driver function
 * that reads the corn.txt file and prints out each
