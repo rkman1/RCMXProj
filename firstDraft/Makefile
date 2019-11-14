@@ -21,14 +21,23 @@ CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
 # Use of a Linked List with a sort in C
 cornReadObjs := $(01)/cornRead.o
 
+cornReadTestObjs := $(01)/cornReadTest.o
+
+
 cornRead: $(cornReadObjs)
 	$(PP) $(CXXFLAGS) -o $(01)/cornRead $(cornReadObjs)
 
 cornRead.o: $(01)/cornRead.cpp
 	$(PP) $(CXXFLAGS) -c $(01)/cornRead.cpp
 
+cornReadTest: $(cornReadTestObjs)
+		$(PP) $(CXXFLAGS) -o $(01)/cornReadTest $(cornReadTestObjs)
+
+cornReadTest.o: $(01)/cornReadTest.cpp
+		$(PP) $(CXXFLAGS) -c $(01)/cornReadTest.cpp
+
 # Make all
-all: cornRead
+all: cornRead cornReadTest
 
 # Make clean
 clean :

@@ -21,7 +21,7 @@ int main() {
 	int Jan = 0;
 	int Feb = 1;
 	std::vector< int > corn;
-	for (int i=0, i <= 1, i++){
+	for (int i=0; i <= 1; i++){
 		corn.push_back(i); //initialize vector for 2 different contracts
 	}
 	std::ifstream inFile;
@@ -42,17 +42,18 @@ int main() {
 		if (item.compare(0,2,"ZC") == 0) { //Classifys corn contracts
 			if (item.find(ZC1) != std::string::npos){ //Classifys corn spreads
 				if (item.find(ZCF0) != std::string::npos){
-									corn.insert(Jan,cornCount1); //Adds counter value to the vector
-									cornCount1++;
+								//	corn.insert(Jan,cornCount1); //Adds counter value to the vector
+							//		cornCount1++;
+									corn[Jan] += 1;
 				}
 				if (item.find(ZCG0) != std::string::npos){
-									corn.insert(Feb,cornCount2);
-									cornCount2++;
+								//	corn.insert(Feb,cornCount2);
+								//	cornCount2++;
 				}
 			} else{ //Checks for only corn outrights
 					if (item.find(ZCF0) != std::string::npos){
-									corn.insert(Jan,cornCount1);
-									cornCount1++;
+								//	corn.insert(Jan,cornCount1);
+								//	cornCount1++;
 					}
 				}
 			} //closes original if loop
