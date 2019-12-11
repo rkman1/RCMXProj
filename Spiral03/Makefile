@@ -20,18 +20,18 @@ CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
 # Command: make cornReadTest and corn1
 # Use of a Linked List with a sort in C
 
-cornReadObjs := $(01)/cornRead.o
+cornRead1Objs := $(01)/cornRead1.o
 
-cornRead: $(cornReadObjs)
-				$(PP) $(CXXFLAGS) -o $(01)/cornRead $(cornReadObjs)
+cornRead1: $(cornRead1Objs)
+				$(PP) $(CXXFLAGS) -o $(01)/cornRead1 $(cornRead1Objs)
 
-cornRead.o: $(01)/cornRead.cpp
-				$(PP) $(CXXFLAGS) -c $(01)/cornRead.cpp
+cornRead1.o: $(01)/cornRead1.cpp
+				$(PP) $(CXXFLAGS) -c $(01)/cornRead1.cpp
 
 
 # Make all
-all: cornRead
+all: cornRead1
 
 # Make clean
 clean :
-	rm -rf *.o cornRead
+	rm -rf *.o cornRead1
