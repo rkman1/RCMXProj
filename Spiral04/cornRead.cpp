@@ -204,6 +204,7 @@ std::cout <<
 	        int res = corn[i][z] + corn[j][z] + corn[k][z]; //Sum of the three vectors element by element
 					temp2.push_back(res);
 	      }
+				//Check to see if the temp2 vector is all zeros
 				if (*max_element(temp2.begin(), temp2.end()) == 0
 			&& *min_element(temp2.begin(), temp2.end()) == 0) {
 						// Output contract combinations that work in vector form
