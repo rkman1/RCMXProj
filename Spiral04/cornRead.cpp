@@ -178,7 +178,7 @@ int main() {
 
 //	std::cout << corn.size() << '\n'; /denotes how many contracts were found
 std::cout <<
-	"--------- Displaying All Desired Contracts --------- "
+	"--------- Displaying All Contracts Read in --------- "
 		<< '\n';
 	//Print each vector contained within the corn vector on its own line
 	// 1s represent buys, 0 represent DNE, and -1s represent sells
@@ -193,7 +193,7 @@ std::cout <<
 	unsigned n = 20; //number of vectors in the corn vector
 
 	std::cout <<
-		"--------- Analyzing Trading Relatinships in Sets of Three--------- "
+		"--------- Analyzing Trading Relationships in Sets of Three--------- "
 			<< '\n';
 	//Determine which trading relationships work for 3 contracts at a time
 	for (unsigned i = 0; i < n-2; i++) {
