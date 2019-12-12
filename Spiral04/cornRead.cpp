@@ -28,7 +28,7 @@ std::vector<int> may1 = {0,-1,0,0,0}; //-K
 std::vector<int> jul1 = {0,0,-1,0,0}; //-N
 std::vector<int> sep1 = {0,0,0,-1,0}; //-U
 std::vector<int> dec1 = {0,0,0,0,-1}; //-Z
-
+//Future spreads
 std::vector<int> spread1 = {1,-1,0,0,0}; //ZCH0-ZCK0
 std::vector<int> spread2 = {1,0,-1,0,0}; //ZCH0-ZCN0
 std::vector<int> spread3 = {1,0,0,-1,0}; //ZCH0-ZCU0
@@ -53,96 +53,93 @@ int main() {
 	//Variable Declaration
 	std::vector <std::vector<int>> corn;
 	std::string item;
-	std::string ZC1 = "-";
+	std::string ZC1 = "-ZC";
 
 	//Reading the entire file
 	while (std::getline(inFile, item)){
-		if (item.compare(0,2,"ZC") == 0) { //Classifys corn contracts
-			if (item.compare(3,1,"0") == 0){ //Classifys contracts only from 2020
-				if (item.find(ZC1) != std::string::npos){ //Creates spread path
-					if (item.compare(5,2,"ZC") == 0) {  //filters 2020 corn future spreads only
-						if (item.compare(8,1,"0") == 0) {
-							char monthSymb = item[2];
-							char monthSymb1 = item[7];
-							std::vector<int> temp (5);
-							switch (monthSymb) { //Checks fronthalf of spread
-								case 'H':
-									switch (monthSymb1) { //Checks backhalf of spread
-										case 'K':
-											for (unsigned i = 0; i <= 4; i++){
-												temp[i] = mar[i] - may[i];
-											}
+		if (item.compare(0,2,"ZC") == 0 && item.compare(3,1,"0") == 0) { //Classifys corn contracts from 2020
+			if (item.find(ZC1) != std::string::npos){ //Creates corn spread path
+				if (item.compare(8,1,"0") == 0) {  //filters 2020 corn future spreads only
+						char monthSymb = item[2];
+						char monthSymb1 = item[7];
+						std::vector<int> temp (5);
+						switch (monthSymb) { //Checks fronthalf of spread
+							case 'H':
+								switch (monthSymb1) { //Checks backhalf of spread
+									case 'K':
+										for (unsigned i = 0; i <= 4; i++){
+											temp[i] = mar[i] - may[i];
+										}
+										corn.push_back(temp);
+										break;
+									case 'N':
+									for (unsigned i = 0; i <= 4; i++){
+										temp[i] = mar[i] - jul[i];
+									}
+										corn.push_back(temp);
+										break;
+									case 'U':
+									for (unsigned i = 0; i <= 4; i++){
+										temp[i] = mar[i] - sep[i];
+									}
+										corn.push_back(temp);
+										break;
+									case 'Z':
+									for (unsigned i = 0; i <= 4; i++){
+										temp[i] = mar[i] - dec[i];
+									}
+										corn.push_back(temp);
+										break;
+									}
+								break;
+							case 'K':
+								switch (monthSymb1) { //Checks backhalf of spread
+									case 'N':
+									for (unsigned i = 0; i <= 4; i++){
+										temp[i] = may[i] - jul[i];
+										}
+										corn.push_back(temp);
+										break;
+									case 'U':
+									for (unsigned i = 0; i <= 4; i++){
+										temp[i] = may[i] - sep[i];
+									}
+										corn.push_back(temp);
+										break;
+									case 'Z':
+									for (unsigned i = 0; i <= 4; i++){
+										temp[i] = may[i] - dec[i];
+									}
+										corn.push_back(temp);
+										break;
+									}
+								break;
+							case 'N':
+								switch (monthSymb1) { //Checks backhalf of spread
+									case 'U':
+									for (unsigned i = 0; i <= 4; i++){
+										temp[i] = jul[i] - sep[i];
+									}
 											corn.push_back(temp);
 											break;
-										case 'N':
-										for (unsigned i = 0; i <= 4; i++){
-											temp[i] = mar[i] - jul[i];
-										}
+									case 'Z':
+									for (unsigned i = 0; i <= 4; i++){
+										temp[i] = jul[i] - dec[i];
+									}
 											corn.push_back(temp);
 											break;
-										case 'U':
-										for (unsigned i = 0; i <= 4; i++){
-											temp[i] = mar[i] - sep[i];
-										}
-											corn.push_back(temp);
-											break;
-										case 'Z':
-										for (unsigned i = 0; i <= 4; i++){
-											temp[i] = mar[i] - dec[i];
-										}
-											corn.push_back(temp);
-											break;
-										}
-									break;
-								case 'K':
-									switch (monthSymb1) { //Checks backhalf of spread
-										case 'N':
-										for (unsigned i = 0; i <= 4; i++){
-											temp[i] = may[i] - jul[i];
-											}
-											corn.push_back(temp);
-											break;
-										case 'U':
-										for (unsigned i = 0; i <= 4; i++){
-											temp[i] = may[i] - sep[i];
-										}
-											corn.push_back(temp);
-											break;
-										case 'Z':
-										for (unsigned i = 0; i <= 4; i++){
-											temp[i] = may[i] - dec[i];
-										}
-											corn.push_back(temp);
-											break;
-										}
-									break;
-								case 'N':
-									switch (monthSymb1) { //Checks backhalf of spread
-										case 'U':
-										for (unsigned i = 0; i <= 4; i++){
-											temp[i] = jul[i] - sep[i];
-										}
-												corn.push_back(temp);
-												break;
-										case 'Z':
-										for (unsigned i = 0; i <= 4; i++){
-											temp[i] = jul[i] - dec[i];
-										}
-												corn.push_back(temp);
-												break;
-										}
-									break;
-								case 'U':
-									switch (monthSymb1) { //Checks backhalf of spread
-										case 'Z':
-										for (unsigned i = 0; i <= 4; i++){
-											temp[i] = sep[i] - dec[i];
-										}
-											corn.push_back(temp);
-											break;
-										}
-									break;
-								}
+									}
+								break;
+							case 'U':
+								switch (monthSymb1) { //Checks backhalf of spread
+									case 'Z':
+									for (unsigned i = 0; i <= 4; i++){
+										temp[i] = sep[i] - dec[i];
+									}
+										corn.push_back(temp);
+										break;
+									}
+								break;
 							}
 						}
 					}
@@ -168,7 +165,6 @@ int main() {
 			}
 		}
 	}
-}
 	//Accounting for outright sells
 	corn.push_back(mar1);
 	corn.push_back(may1);
@@ -176,11 +172,12 @@ int main() {
 	corn.push_back(sep1);
 	corn.push_back(dec1);
 
-//	std::cout << corn.size() << '\n'; /denotes how many contracts were found
+
+std::cout << corn.size() << " contracts found!" << '\n'; //Denotes how many contracts were found
 std::cout <<
 	"--------- Displaying All Contracts Read in --------- "
 		<< '\n';
-	//Print each vector contained within the corn vector on its own line
+	//Prints each vector contained within the corn vector on its own line
 	// 1s represent buys, 0 represent DNE, and -1s represent sells
 	for (unsigned i = 0; i < corn.size(); i++) {
 	std::vector <int> temp1 = corn.at(i);
@@ -190,7 +187,7 @@ std::cout <<
 		std::cout << std::endl;
 	  }
 		std::cout << std::endl;
-	unsigned n = 20; //number of vectors in the corn vector
+	unsigned n = (unsigned)corn.size(); //number of vectors in the corn vector
 
 	std::cout <<
 		"--------- Analyzing Trading Relationships in Sets of Three--------- "
@@ -198,13 +195,13 @@ std::cout <<
 	//Determine which trading relationships work for 3 contracts at a time
 	for (unsigned i = 0; i < n-2; i++) {
 	  for (unsigned j = i+1; j < n-1; j++) {
-	    for (unsigned k = j+1; k < n; k++) {
+	    for (unsigned k = i+2; k < n; k++) {
 	      std::vector<int> temp2;
 				std::vector<int> symb1;
 				std::vector<int> symb2;
 				std::vector<int> symb3;
 	      for(unsigned z = 0; z <= 4; z++){
-	        int res = corn[i][z] + corn[j][z] + corn[k][z];
+	        int res = corn[i][z] + corn[j][z] + corn[k][z]; //Sum of the three vectors element by element
 					temp2.push_back(res);
 	      }
 				if (*max_element(temp2.begin(), temp2.end()) == 0
@@ -226,21 +223,36 @@ std::cout <<
 					 }
 					 std::cout << std::endl;
 
-					//Output contract combinations that work in symbol form
-						if (symb1 == mar || symb1 == mar1){
-							std::cout << " ZCH0" << std::endl;
+				   	//Output contract combinations that work in symbol form
+						if (symb1 == mar){
+							std::cout << " ZCH0 (Buy)" << std::endl;
 						}
-						if (symb1 == may || symb1 == may1) {
-							std::cout << " ZCK0" << std::endl;
+						if (symb1 == mar1){
+							std::cout << " ZCH0 (Sell)" << std::endl;
 						}
-						if (symb1 == jul || symb1 == jul1) {
-							std::cout << " ZCN0" << std::endl;
+						if (symb1 == may) {
+							std::cout << " ZCK0 (Buy)" << std::endl;
 						}
-						if (symb1 == sep || symb1 == sep1) {
-							std::cout << " ZCU0" << std::endl;
+						if (symb1 == may1) {
+							std::cout << " ZCK0 (Sell)" << std::endl;
 						}
-						if (symb1 == dec || symb1 == dec1) {
-							std::cout << " ZCZ0" << std::endl;
+						if (symb1 == jul) {
+							std::cout << " ZCN0 (Buy)" << std::endl;
+						}
+						if (symb1 == jul1) {
+							std::cout << " ZCN0 (Sell)" << std::endl;
+						}
+						if (symb1 == sep) {
+							std::cout << " ZCU0 (Buy)" << std::endl;
+						}
+						if (symb1 == sep1) {
+							std::cout << " ZCU0 (Sell)" << std::endl;
+						}
+						if (symb1 == dec) {
+							std::cout << " ZCZ0 (Buy)" << std::endl;
+						}
+						if (symb1 == dec1) {
+							std::cout << " ZCZ0 (Sell)" << std::endl;
 						}
 						if (symb1 == spread1){
 							std::cout << " ZCH0-ZCK0" << std::endl;
@@ -273,20 +285,35 @@ std::cout <<
 							std::cout << " ZCU0-ZCZ0" << std::endl;
 						}
 
-						if (symb2 == mar || symb2 == mar1){
-							std::cout << " ZCH0" << std::endl;
+						if (symb2 == mar){
+							std::cout << " ZCH0 (Buy)" << std::endl;
 						}
-						if (symb2 == may || symb2 == may1) {
-							std::cout << " ZCK0" << std::endl;
+						if (symb2 == mar1){
+							std::cout << " ZCH0 (Sell)" << std::endl;
 						}
-						if (symb2 == jul || symb2 == jul1) {
-							std::cout << " ZCN0" << std::endl;
+						if (symb2 == may) {
+							std::cout << " ZCK0 (Buy)" << std::endl;
 						}
-						if (symb2 == sep || symb2 == sep1) {
-							std::cout << " ZCU0" << std::endl;
+						if (symb2 == may1) {
+							std::cout << " ZCK0 (Sell)" << std::endl;
 						}
-						if (symb2 == dec || symb2 == dec1) {
-							std::cout << " ZCZ0" << std::endl;
+						if (symb2 == jul) {
+							std::cout << " ZCN0 (Buy)" << std::endl;
+						}
+						if (symb2 == jul1) {
+							std::cout << " ZCN0 (Sell)" << std::endl;
+						}
+						if (symb2 == sep) {
+							std::cout << " ZCU0 (Buy)" << std::endl;
+						}
+						if (symb2 == sep1) {
+							std::cout << " ZCU0 (Sell)" << std::endl;
+						}
+						if (symb2 == dec) {
+							std::cout << " ZCZ0 (Buy)" << std::endl;
+						}
+						if (symb2 == dec1) {
+							std::cout << " ZCZ0 (Sell)" << std::endl;
 						}
 						if (symb2 == spread1){
 							std::cout << " ZCH0-ZCK0" << std::endl;
@@ -319,20 +346,35 @@ std::cout <<
 							std::cout << " ZCU0-ZCZ0" << std::endl;
 						}
 
-						if (symb3 == mar || symb3 == mar1){
-							std::cout << " ZCH0" << std::endl;
+						if (symb3 == mar){
+							std::cout << " ZCH0 (Buy)" << std::endl;
 						}
-						if (symb3 == may || symb3 == may1) {
-							std::cout << " ZCK0" << std::endl;
+						if (symb3 == mar1){
+							std::cout << " ZCH0 (Sell)" << std::endl;
 						}
-						if (symb3 == jul || symb3 == jul1) {
-							std::cout << " ZCN0" << std::endl;
+						if (symb3 == may) {
+							std::cout << " ZCK0 (Buy)" << std::endl;
 						}
-						if (symb3 == sep || symb3 == sep1) {
-							std::cout << " ZCU0" << std::endl;
+						if (symb3 == may1) {
+							std::cout << " ZCK0 (Sell)" << std::endl;
 						}
-						if (symb3 == dec || symb3 == dec1) {
-							std::cout << " ZCZ0" << std::endl;
+						if (symb3 == jul) {
+							std::cout << " ZCN0 (Buy)" << std::endl;
+						}
+						if (symb3 == jul1) {
+							std::cout << " ZCN0 (Sell)" << std::endl;
+						}
+						if (symb3 == sep) {
+							std::cout << " ZCU0 (Buy)" << std::endl;
+						}
+						if (symb3 == sep1) {
+							std::cout << " ZCU0 (Sell)" << std::endl;
+						}
+						if (symb3 == dec) {
+							std::cout << " ZCZ0 (Buy)" << std::endl;
+						}
+						if (symb3 == dec1) {
+							std::cout << " ZCZ0 (Sell)" << std::endl;
 						}
 						if (symb3 == spread1){
 							std::cout << " ZCH0-ZCK0" << std::endl;
@@ -365,14 +407,9 @@ std::cout <<
 							std::cout << " ZCU0-ZCZ0" << std::endl;
 						}
 						std::cout<< std::endl;
-
 					}
-
-				  }
+				 }
 				}
 	    }
-
-
-
 	return 0;
 }
