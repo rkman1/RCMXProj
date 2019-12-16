@@ -1,0 +1,12 @@
+Directions on downloading and compiling the code on your own machine:
+
+  The code is available to download on GitHub under the username rkman1.
+
+  Once downloaded, the MakeFile must be adjusted to ensure the code compiles on
+  your computer. That is, Line 18 must be adjusted to follow the path of where
+  you download the file.
+
+  01 := ~/Documents/RCMX_Code/FinalProject
+
+  After adjustments are made to this line, code should compile.
+  If you have any further issues, questions should be sent to rkman@nd.edu.
